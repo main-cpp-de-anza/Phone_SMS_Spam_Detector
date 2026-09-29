@@ -17,8 +17,8 @@ python Basic_Demo.py
 ## Datasets 
 
 * [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection)
-* [Mendeley SMS Phishing Dataset](https://data.mendeley.com/datasets/f45bk47ycf/1)
-* [Smishtank Phishing Corpus (SMISH_DT)](https://github.com/MarazMia/SMISH_DT)
+* [Mendeley SMS Phishing Dataset](https://data.mendeley.com/datasets/f45bkkt8pr/1)
+* [Smishtank Phishing Corpus (SMISH_DT)](https://smishtank.com/dataset)
 * [IMC 2025 ACM Smishing Dataset](https://github.com/reportsmishing/Smishing-Dataset-IMC25)
 * [NUS SMS Corpus](https://github.com/kite1988/nus-sms-corpus)
 
