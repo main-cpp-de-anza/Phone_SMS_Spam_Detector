@@ -16,11 +16,11 @@ python Basic_Demo.py
 
 ## Datasets 
 
-* [UCI SMS Spam Collection](https://raw.githubusercontent.com/thehananbhat/spam-vs-ham/main/spam.csv)
-* [Mendeley SMS Phishing Dataset](https://raw.githubusercontent.com/MarazMia/SMISH_DT/main/Dataset/Mendeley_Dataset_5971.csv)
-* [Smishtank Phishing Corpus](https://raw.githubusercontent.com/MarazMia/SMISH_DT/main/Dataset/smishtank.csv)
-* [IMC 2025 ACM Smishing Dataset](https://raw.githubusercontent.com/reportsmishing/Smishing-Dataset-IMC25/main/dataset/final_dataset_output.csv)
-* [NUS SMS Corpus](https://raw.githubusercontent.com/kite1988/nus-sms-corpus/master/README.md)
+* [UCI SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection)
+* [Mendeley SMS Phishing Dataset](https://data.mendeley.com/datasets/f45bk47ycf/1)
+* [Smishtank Phishing Corpus (SMISH_DT)](https://github.com/MarazMia/SMISH_DT)
+* [IMC 2025 ACM Smishing Dataset](https://github.com/reportsmishing/Smishing-Dataset-IMC25)
+* [NUS SMS Corpus](https://github.com/kite1988/nus-sms-corpus)
 
 ---
 
