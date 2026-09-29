@@ -16,8 +16,6 @@ python Basic_Demo.py
 
 ## Datasets 
 
-Phone text messages only. All human-verified and academic peer-reviewed sources:
-
 * [UCI SMS Spam Collection](https://raw.githubusercontent.com/thehananbhat/spam-vs-ham/main/spam.csv)
 * [Mendeley SMS Phishing Dataset](https://raw.githubusercontent.com/MarazMia/SMISH_DT/main/Dataset/Mendeley_Dataset_5971.csv)
 * [Smishtank Phishing Corpus](https://raw.githubusercontent.com/MarazMia/SMISH_DT/main/Dataset/smishtank.csv)
