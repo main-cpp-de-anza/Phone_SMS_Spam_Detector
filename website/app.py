@@ -176,6 +176,9 @@ def detect_spamassassin(text: str, threshold: float = 2.0):
 
 # Engine 3: Machine Learning (LinearSVC Pipeline)
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_linearsvc.joblib")
+if not os.path.exists(MODEL_PATH):
+    # Local development fallback when the model remains in the repository root.
+    MODEL_PATH = os.path.join(os.path.dirname(__file__), "..", "model_linearsvc.joblib")
 
 ml_pipeline = joblib.load(MODEL_PATH)
 
