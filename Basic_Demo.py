@@ -20,38 +20,126 @@ def detect_naive(text):
 # Engine 2: SpamAssassin (Simple Point Scoring)
 # ============================================================
 RULE_POINTS = {
-    "million dollars": 4.0,
-    "lottery": 3.5,
-    "prize": 3.0,
-    "winner": 2.5,
-    "locked": 2.5,
-    "suspended": 2.5,
-    "alert": 1.5,
+    # Banking / Phishing
+    "kyc": 3.5,
+    "yono": 3.5,
+    "hdfc": 3.0,
+    "paytm": 3.0,
+    "netbanking": 3.0,
+    "pan card": 3.5,
+    "pancard": 3.5,
+    "sbi": 2.5,
+    "icici": 2.5,
+    "account blocked": 4.0,
+    "account suspended": 4.0,
+    "account locked": 3.5,
+    "card blocked": 3.5,
+    "security alert": 3.0,
+    "unauthorized": 2.5,
+    "unusual activity": 2.5,
+    "verify your": 2.5,
+    "update your": 2.0,
+    "won": 2.0, 
+    "free": 1.0,
+    "bank account": 2.0,
+
+    # Links & URLs
+    "[url]": 2.0,
+    "http://": 2.5,
+    "https://": 2.5,
     "bit.ly": 2.5,
     "tinyurl": 2.5,
-    "stuck": 2.5,
+    "click here": 3.0,
+    "click link": 3.0,
+    "click the link": 3.0,
+    "click url": 3.0,
+    "tap here": 2.5,
+    "visit": 1.0,
+
+    # Delivery & Carriers
+    "usps": 2.5,
+    "fedex": 2.5,
+    "dhl": 2.5,
     "parcel": 2.0,
-    "package": 2.0,
+    "package": 1.5,
+    "stuck at transit": 3.5,
+    "stuck": 2.0,
+    "redelivery": 3.0,
+    "customs fee": 3.0,
+    "warehouse": 2.0,
+
+    # Lottery, Prizes & Money
+    "million dollars": 4.0,
+    "lottery": 3.5,
+    "jackpot": 3.5,
     "gift card": 3.5,
+    "cash prize": 3.5,
+    "prize": 2.5,
+    "winner": 2.5,
+    "congratulations": 2.0,
+    "congratulation": 2.0,
+    "claim": 2.0,
+    "[money]": 1.0,
+    "free entry": 3.5,
+    "wkly comp": 3.5,
+
+    # Urgent Actions & SMS Promos
+    "urgent": 2.0,
+    "immediately": 2.0,
+    "action required": 3.0,
+    "final notice": 3.0,
+    "reply stop": 3.0,
+    "text stop": 3.0,
+    "txt stop": 3.0,
+    "stop to cancel": 3.0,
+    "[phone]": 1.0,
+    "toll free": 2.0,
+    "toll-free": 2.0,
+    "customer care": 2.0,
+    "helpline": 2.0,
+    "dear customer": 2.5,
+    "call now": 2.0,
+
+    # Impersonation
     "smashed my phone": 4.0,
     "dropped my phone": 4.0,
-    "urgent": 2.0,
-    "claim": 2.0,
-    "free": 1.5,
+    "lost my phone": 4.0,
+    "this is my new number": 4.0,
 
-    "graduated": -3.5,
-    "daughter": -3.0,
-    "prerequisites": -3.5,
+    # Ham Indicators (Negative Points)
+    "haha": -3.0,
+    "hehe": -3.0,
+    "lols": -2.5,
+    "dun": -2.5,
+    "lor": -2.5,
+    "leh": -2.5,
+    "lah": -2.5,
+    "liao": -2.5,
+    "dunno": -2.5,
+    "okie": -2.5,
     "homework": -3.0,
+    "prerequisites": -3.5,
+    "assignment": -2.5,
+    "lecture": -2.5,
+    "graduated": -3.5,
     "lunch": -2.5,
     "dinner": -2.5,
+    "breakfast": -2.0,
     "meeting": -2.0,
     "tomorrow": -2.0,
+    "tonight": -1.5,
+    "yesterday": -1.5,
     "how it's going": -2.0,
-    "how are you": -2.0
+    "how are you": -2.0,
+    "see you": -2.0,
+    "love you": -2.0,
+    "daughter": -3.0,
+    "thanks": -1.5,
+    "thank you": -1.5,
+    "sorry": -1.5
 }
 
-def detect_spamassassin(text, threshold=4.0):
+def detect_spamassassin(text, threshold=2.0):
     score = 0.0
     hits = []
     text_lower = text.lower()
@@ -117,7 +205,7 @@ def main():
         
         # Display results
         print("\nResults:")
-        print(f"Naive            : {res_naive}")
+        print(f"Rule-Based       : {res_naive}")
         if sa_hits:
             hit_str = ", ".join(sa_hits)
             print(f"SpamAssassin     : {res_sa} (score: {sa_score:+.1f} | hits: {hit_str})")
