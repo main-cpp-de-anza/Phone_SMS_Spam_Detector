@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     } else {
       naiveDetails.innerHTML = `
-        <div class="result-detail-line">No banned keywords found in text.</div>
+        <div class="result-detail-line">No suspicious keywords found in text.</div>
       `;
     }
 

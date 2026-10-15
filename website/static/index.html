@@ -57,7 +57,7 @@
 
       <div class="playground-card">
         <div class="playground-input-group">
-          <textarea id="sms-input" class="playground-textarea" placeholder="Paste or type any SMS message here... (e.g. 'You won $500 cash! Visit bit.ly/claim now')">CONGRATULATION, you just won $500 cash! Visit bit.ly/claim or call 800-555-0199 now!</textarea>
+          <textarea id="sms-input" class="playground-textarea" placeholder="Paste or type any SMS message here... (e.g. 'You won $500 cash! Visit bit.ly/claim now')"></textarea>
         </div>
 
         <div class="preset-container">
@@ -68,7 +68,7 @@
         </div>
 
         <div class="playground-actions">
-          <span id="char-count" class="char-counter">85 characters</span>
+          <span id="char-count" class="char-counter">0 characters</span>
           <button id="btn-analyze" class="btn-analyze">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polygon points="5 3 19 12 5 21 5 3"></polygon>
@@ -99,7 +99,7 @@
           <!-- Card 2: SpamAssassin -->
           <div class="result-card">
             <div class="result-header">
-              <span class="result-title">2. SpamAssassin</span>
+              <span class="result-title">2.&nbsp;SpamAssassin</span>
               <span id="sa-badge" class="status-badge badge-spam">SPAM</span>
             </div>
             <div id="sa-details" class="result-details">
@@ -116,7 +116,7 @@
           <!-- Card 3: Machine Learning -->
           <div class="result-card">
             <div class="result-header">
-              <span class="result-title">3. LinearSVC</span>
+              <span class="result-title result-title-ml"><span class="result-index">3.</span><span class="result-name">Machine Learning</span></span>
               <span id="ml-badge" class="status-badge badge-spam">SPAM</span>
             </div>
             <div id="ml-details" class="result-details">
@@ -175,7 +175,7 @@
             \]
           </div>
           <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:0.4rem;">
-            Binary boolean check. No shades of gray. 1 accidental bad word kills whole message.
+            Having only 1 "suspicious" word will trigger SPAM
           </p>
         </div>
       </div>
@@ -253,7 +253,7 @@
       <div class="concept-card">
         <div class="concept-header">
           <h3>From Text to High-Dimensional Geometry</h3>
-          <span class="concept-badge">TF-IDF + LinearSVC Hyperplane</span>
+          <span class="concept-badge">TF-IDF + LinearSVC</span>
         </div>
 
         <div class="concept-grid">

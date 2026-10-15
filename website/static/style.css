@@ -777,11 +777,35 @@ tr.winner-row td:first-child {
 
 .result-title {
   font-family: var(--font-sans);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-main);
   letter-spacing: -0.01em;
-  white-space: nowrap;
+  line-height: 1.35;
+  min-width: 0;
+  flex: 1 1 auto;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.result-card:nth-child(2) .result-title {
+  margin-right: 0.45rem;
+  font-size: 0.86rem;
+}
+
+.result-title-ml {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.25rem;
+}
+
+.result-title-ml .result-index {
+  flex: 0 0 auto;
+}
+
+.result-title-ml .result-name {
+  min-width: 0;
 }
 
 .status-badge {
