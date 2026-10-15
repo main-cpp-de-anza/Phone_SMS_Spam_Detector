@@ -15,6 +15,7 @@ app = FastAPI(title="SMS Spam Prediction API")
 
 
 @app.post("/")
+@app.post("/api/predict")
 def predict(req: PredictRequest):
     return predict_endpoint(req)
 
