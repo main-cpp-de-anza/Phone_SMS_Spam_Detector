@@ -27,7 +27,7 @@ def predict(text):
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("📧 LIVE SPAM DETECTOR (Type 'exit' to quit)")
+    print("LIVE SPAM DETECTOR (Type 'exit' to quit)")
     print("=" * 60)
     
     while True:

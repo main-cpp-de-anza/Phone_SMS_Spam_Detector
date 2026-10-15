@@ -1,18 +1,75 @@
 # Phone_SMS_Spam_Detector
 
-## Model Comparison
+## Important Files
 
-![Model Comparison Results](images/model_comparison.png)
+Start with these files to understand the project:
 
-LinearSVC has higest Accuracy (98.84%) and F1 Score (95.25%), missing 51 spam messages compared to 120 (Logistic), 233 (Naive Bayes), and 300 (KNN).
+| File | Purpose |
+| --- | --- |
+| `website` | Code for website. |
+| `model_linearsvc.joblib` | Trained LinearSVC model used by the machine-learning detector. |
+| `*.joblib files` | Weights for the detecting models |
+| `Basic_Demo.py` | Demo of the detector in the terminal. |
+| `predict_live.py` | Simple script for testing predictions from the trained model. |
+| `clean_data.py` | Cleaned dataset combined from multiple open-source SPAM & HAM SMS datasets. |
+| `model_comparison.ipynb` | Jupyter Notebook used to evaluate the machine-learning models. |
 
----
-## Run Demo
+## How to Use This Repository
+
+This project detects whether an SMS message is spam using three methods: keyword rules, point scoring, and a trained LinearSVC machine-learning model.
+
+### 1. Download the repository
+
+```bash
+git clone https://github.com/main-cpp-de-anza/Phone_SMS_Spam_Detector.git
+cd Phone_SMS_Spam_Detector
+```
+
+### 2. Create a Python environment
+
+Python 3.10 or newer is recommended.
+
+```bash
+python -m venv .venv
+```
+
+Activate it on Windows:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Activate it on macOS or Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Install the dependencies
+
+```bash
+pip install -r website/requirements.txt
+```
+
+### 4. Run the interactive website
+
+```bash
+python website/app.py
+```
+
+Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser. Enter an SMS message, or choose one of the preset examples, and click **Analyze Message**.
+
+### 5. Run the command-line demo
+
+To compare the three detection methods in the terminal, run:
+
 ```bash
 python Basic_Demo.py
 ```
 
----
+The trained model file `model_linearsvc.joblib` must remain in the repository root for the machine-learning detector to work.
+
+
 
 ## Datasets 
 
@@ -68,3 +125,8 @@ python Basic_Demo.py
   ```text
   hey mom, are we meeting for lunch at [number]:[number] tomorrow?
   ```
+## Model Comparison
+
+![Model Comparison Results](images/model_comparison.png)
+
+LinearSVC has higest Accuracy (98.84%) and F1 Score (95.25%), missing 51 spam messages compared to 120 (Logistic), 233 (Naive Bayes), and 300 (KNN).
