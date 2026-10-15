@@ -947,3 +947,178 @@ tr.winner-row td:first-child {
 .footer a:hover {
   color: var(--color-terracotta-hover);
 }
+
+/* ============================================================
+   Mobile Layout
+   ============================================================ */
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    padding: 0.85rem 0;
+  }
+
+  .nav-container {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .brand {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 0.78rem;
+  }
+
+  .nav-github {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+  }
+
+  .main-wrapper {
+    padding: 1.75rem 1rem 4rem;
+  }
+
+  .hero {
+    padding: 2rem 0 2.5rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .hero-tag {
+    font-size: 0.95rem;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .section {
+    margin-bottom: 3.25rem;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  .section-lead {
+    font-size: 0.98rem;
+  }
+
+  .concept-card,
+  .playground-card {
+    padding: 1.15rem;
+    border-radius: var(--radius-md);
+  }
+
+  .concept-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+
+  .concept-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .concept-badge {
+    max-width: 100%;
+  }
+
+  .playground-textarea {
+    min-height: 130px;
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+
+  .preset-label {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .playground-actions {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .btn-analyze {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .math-box {
+    padding: 1rem;
+  }
+
+  .math-formula {
+    padding: 0.8rem 0.65rem;
+    font-size: 0.95rem;
+  }
+
+  .training-stats {
+    gap: 0.65rem;
+  }
+
+  .stat-card {
+    padding: 0.9rem 0.6rem;
+  }
+
+  .stat-number {
+    font-size: 1.55rem;
+  }
+
+  .table-wrapper {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .footer {
+    padding: 2rem 0.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .training-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 1.85rem;
+  }
+
+  .result-header {
+    gap: 0.4rem;
+  }
+
+  .status-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
