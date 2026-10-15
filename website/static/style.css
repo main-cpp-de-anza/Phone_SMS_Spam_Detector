@@ -118,12 +118,52 @@ body {
   font-size: 0.92rem;
   font-weight: 500;
   white-space: nowrap;
-  transition: color 0.15s ease;
+  transition: color 0.2s ease;
   line-height: 1;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: var(--color-terracotta);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.45rem;
+  height: 1px;
+  background: var(--color-terracotta);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-github {
+  background: #2B2926;
+  border: 1px solid #2B2926;
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 0.95rem;
+  color: #FAF8F5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(43, 41, 38, 0.16);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-github:hover {
+  background: #1D1A16;
+  border-color: var(--color-terracotta);
+  color: #FFFFFF;
+  box-shadow: 0 5px 12px rgba(193, 95, 60, 0.2);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
@@ -210,12 +250,14 @@ body {
   font-size: 0.98rem;
   border: none;
   cursor: pointer;
-  transition: all 0.15s ease;
+  box-shadow: 0 2px 5px rgba(166, 78, 46, 0.16);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-primary:hover {
   background: var(--color-terracotta-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(166, 78, 46, 0.2);
 }
 
 .btn-secondary {
@@ -229,12 +271,21 @@ body {
   font-weight: 500;
   font-size: 0.98rem;
   border: 1px solid var(--border-subtle);
-  transition: all 0.15s ease;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn-secondary:hover {
   background: var(--bg-subtle);
   border-color: var(--text-muted);
+  transform: translateY(-1px);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.nav-github:focus-visible,
+.footer a:focus-visible {
+  outline: 3px solid rgba(193, 95, 60, 0.25);
+  outline-offset: 3px;
 }
 
 /* ============================================================
@@ -654,7 +705,8 @@ tr.winner-row td:first-child {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  transition: all 0.15s ease;
+  box-shadow: 0 2px 5px rgba(166, 78, 46, 0.14);
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-analyze:hover {
@@ -842,4 +894,23 @@ tr.winner-row td:first-child {
 
 .footer-links a:hover {
   color: var(--color-terracotta);
+}
+
+.love-icon {
+  color: #e25555;
+  font-size: 1rem;
+}
+
+.footer a {
+  color: #2B2926;
+  font-weight: 600;
+  text-decoration-color: var(--color-terracotta-soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.footer a:hover {
+  color: var(--color-terracotta-hover);
+  text-decoration-color: var(--color-terracotta);
 }
