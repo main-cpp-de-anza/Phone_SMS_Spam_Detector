@@ -23,6 +23,7 @@
         <li><a href="#concept-ml">3. Machine Learning</a></li>
         <li><a href="#training">Model Training</a></li>
       </ul>
+      <a class="nav-github" href="https://github.com/main-cpp-de-anza/Phone_SMS_Spam_Detector" target="_blank" rel="noopener noreferrer">Github</a>
     </div>
   </nav>
 
@@ -40,9 +41,9 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
-          Try Live Interactive Model
+          Try Interactive Model
         </a>
-        <a href="#training" class="btn-secondary">View Model Training</a>
+        <a href="#training" class="btn-secondary">View Model Pipeline</a>
       </div>
     </header>
 
@@ -62,8 +63,8 @@
         <div class="preset-container">
           <span class="preset-label">Try Presets:</span>
           <button class="preset-pill" data-preset="lottery">Prize / Lottery Scam</button>
-          <button class="preset-pill" data-preset="delivery">USPS Smishing Link</button>
-          <button class="preset-pill" data-preset="casual">Innocent Lunch Chat</button>
+          <button class="preset-pill" data-preset="delivery">Smishing Message</button>
+          <button class="preset-pill" data-preset="casual">Normal Lunch Chat</button>
         </div>
 
         <div class="playground-actions">
@@ -115,7 +116,7 @@
           <!-- Card 3: Machine Learning -->
           <div class="result-card">
             <div class="result-header">
-              <span class="result-title">3. LinearSVC (ML)</span>
+              <span class="result-title">3. LinearSVC</span>
               <span id="ml-badge" class="status-badge badge-spam">SPAM</span>
             </div>
             <div id="ml-details" class="result-details">
@@ -138,7 +139,7 @@
       <div class="section-label">Concept 1</div>
       <h2 class="section-title">Hard-Coded Keyword Matching (Naive)</h2>
       <p class="section-lead">
-        The simplest baseline: keep a list of dirty words. If any bad word appears in the message, scream SPAM immediately.
+        If any "suspicious" word appears in the message, the machine flags SPAM immediately.
       </p>
 
       <div class="concept-card">
@@ -167,9 +168,11 @@
         </div>
 
         <div class="math-box">
-          <div class="math-title">The Math / Logic Rule</div>
+          <div class="math-title">THE LOGIC</div>
           <div class="math-formula">
-            Verdict = SPAM &nbsp;if&nbsp; (any w ∈ BannedWords in text) &nbsp;else&nbsp; HAM
+            \[
+            \text{SPAM if a banned word appears; otherwise HAM}
+            \]
           </div>
           <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:0.4rem;">
             Binary boolean check. No shades of gray. 1 accidental bad word kills whole message.
@@ -181,7 +184,7 @@
     <!-- SECTION: CONCEPT 2 (SPAMASSASSIN) -->
     <section id="concept-spamassassin" class="section">
       <div class="section-label">Concept 2</div>
-      <h2 class="section-title">Heuristic Point Scoring (Apache SpamAssassin Method)</h2>
+      <h2 class="section-title">Point Scoring (Apache SpamAssassin Method)</h2>
       <p class="section-lead">
         Instead of a binary on/off switch, treat spam like a credit score. Words add or subtract points.
       </p>
@@ -193,8 +196,8 @@
         </div>
 
         <p style="color:var(--text-secondary);margin-bottom:1.2rem;">
-          Every suspicious word adds positive points (+). Every normal, conversational word subtracts points (-). 
-          Normal words cancel out accidental bad words so real conversations don't get blocked.
+          Every suspicious word adds positive points (+). Every casual word subtracts points (-). 
+          Normal words cancel out "suspicous" words.
         </p>
 
         <div class="concept-grid">
@@ -221,10 +224,14 @@
         </div>
 
         <div class="math-box">
-          <div class="math-title">The Mathematical Formula</div>
+          <div class="math-title">THE LOGIC</div>
           <div class="math-formula">
-            Total Score = Σ (Points of matching phrases) + [2.0 if AllCaps > 40%]<br>
-            Verdict = SPAM &nbsp;if&nbsp; Total Score ≥ 2.0 &nbsp;else&nbsp; HAM
+            \[
+            \text{Score} = \text{points from matching phrases}
+            \]
+            \[
+            \text{SPAM if Score} \geq 2; \quad \text{otherwise HAM}
+            \]
           </div>
           <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:0.4rem;">
             <strong>Example</strong>: <em>"Are you free for lunch tomorrow? Haha"</em><br>
@@ -256,7 +263,7 @@
               Counts how many times word appears in this text. Uses <strong>Sublinear TF</strong>:
             </p>
             <div class="math-formula" style="font-size:0.82rem;">
-              TF = 1 + log(count) &nbsp;if count > 0
+              \[ \operatorname{TF}(t) = \begin{cases} 1 + \log(\operatorname{count}(t)), & \operatorname{count}(t) > 0 \\ 0, & \text{otherwise} \end{cases} \]
             </div>
             <p style="font-size:0.82rem;color:var(--text-muted);">
               Stops scammers from repeating "FREE" 50 times to hack model.
@@ -269,7 +276,7 @@
               Measures how rare word is across 67,664 messages:
             </p>
             <div class="math-formula" style="font-size:0.82rem;">
-              IDF(t) = log( (1 + N) / (1 + df(t)) ) + 1
+              \[ \operatorname{IDF}(t) = \log\left(\frac{1+N}{1+\operatorname{df}(t)}\right) + 1 \]
             </div>
             <p style="font-size:0.82rem;color:var(--text-muted);">
               Boring words like "the" get wiped out. Rare words like "kyc" get massive boost.
@@ -280,7 +287,9 @@
         <div class="math-box">
           <div class="math-title">The LinearSVC Decision Function</div>
           <div class="math-formula">
-            f(x) = (w · x) + b = Σ (w_i × x_i) + b
+            \[
+            f(x) = w \cdot x + b = \sum_i w_i x_i + b
+            \]
           </div>
           <p style="color:var(--text-secondary);font-size:0.88rem;margin-top:0.4rem;">
             • <code>x</code> = message vector (coordinates in 40,000-dimensional space).<br>
@@ -295,9 +304,9 @@
     <!-- SECTION: MODEL TRAINING & METRICS -->
     <section id="training" class="section">
       <div class="section-label">Engineering & Evaluation</div>
-      <h2 class="section-title">How We Built & Trained the Model</h2>
+      <h2 class="section-title">How We built the Machine Learning Pipeline</h2>
       <p class="section-lead">
-        We merged 5 benchmark datasets, engineered domain tokenizers, and benchmarked 4 algorithms with 5-Fold Stratified Cross-Validation.
+        We merged 5 big SPAM & HAM datasets, engineered domain tokenizers, and evaluated 4 algorithms with 5-Fold Stratified Cross-Validation.
       </p>
 
       <div class="training-stats">
@@ -412,12 +421,12 @@
                 <th>Precision</th>
                 <th>Recall</th>
                 <th>F1 Score</th>
-                <th>Spam Missed (FN)</th>
+                <th>Spam Missed</th>
               </tr>
             </thead>
             <tbody>
               <tr class="winner-row">
-                <td><span style="color:var(--color-terracotta); font-size:1.1rem; line-height:1;">★</span> LinearSVC (Char Subword)</td>
+                <td><span style="color:var(--color-terracotta); font-size:1.1rem; line-height:1;">★</span> LinearSVC (Subword)</td>
                 <td>98.84%</td>
                 <td>98.71%</td>
                 <td>96.94%</td>
@@ -456,18 +465,13 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-links">
-        <a href="#demo">Interactive Model</a>
-        <a href="#concept-naive">Naive Rules</a>
-        <a href="#concept-spamassassin">SpamAssassin</a>
-        <a href="#concept-ml">Machine Learning</a>
-        <a href="#training">Training Methodology</a>
-      </div>
-      <p>Built with FastAPI, Scikit-Learn, and LinearSVC. Design inspired by Claude.</p>
+      <p>Make with <span class="love-icon" aria-label="love">♥</span> by Main.Cpp.</p>
+      <p>Wanna see our code, <a href="https://github.com/main-cpp-de-anza/Phone_SMS_Spam_Detector" target="_blank" rel="noopener noreferrer">visit the Github repo</a>.</p>
     </footer>
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script src="/static/script.js"></script>
 </body>
 </html>
