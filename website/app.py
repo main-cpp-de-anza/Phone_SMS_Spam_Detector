@@ -228,6 +228,7 @@ app.add_middleware(
 class PredictRequest(BaseModel):
     text: str
 
+@app.post("/predict")
 @app.post("/api/predict")
 def predict_endpoint(req: PredictRequest):
     if not req.text or not req.text.strip():
